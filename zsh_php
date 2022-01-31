@@ -1,0 +1,15 @@
+_php () {
+        php_binary="$(brew --prefix php@$1)/bin/php"
+	composer=$(which composer)
+
+        if [[ $2 = 'composer' ]] then
+                $php_binary $composer ${@:3}
+        else
+                $php_binary ${@:2}
+        fi
+}
+
+php74 () { _php 7.4 $@ }
+php8 () { _php 8.0 $@ }
+php80 () { _php 8.0 $@ }
+php81 () { _php 8.1 $@ }
